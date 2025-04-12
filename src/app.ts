@@ -8,6 +8,5 @@ import {Server} from "./presentation/server";
 
 
 function main(){
-    //Server.start(3000);
-    console.log(envs)
+    Server.start(3000);
 }
