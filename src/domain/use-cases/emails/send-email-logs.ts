@@ -1,6 +1,6 @@
-import { EmailService } from "../../../../presentation/email/email.service";
-import { LogEntity, LogSeverityLevel } from "../../../entitites/log.entity";
-import { LogRepository } from "../../../repository/log.repository";
+import { EmailService } from "../../../presentation/email/email.service";
+import { LogEntity, LogSeverityLevel } from "../../entitites/log.entity";
+import { LogRepository } from "../../repository/log.repository";
 
 
 interface SendLogEmailUseCase{
