@@ -17,7 +17,9 @@ export class Server {
         
         // Send email
 
-        const emailService = new EmailService();
+        const emailService = new EmailService(
+            fileSystemLogRepository
+        );
         emailService.sendEmailWithFileSystemsLogs(
             ['ml@gmail.com','ml@hotmail.com']
         )
