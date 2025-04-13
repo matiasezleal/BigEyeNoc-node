@@ -16,21 +16,29 @@ export class CheckService implements CheckServiceUseCase{
         private readonly errorCallBack :ErrorCallback,
     ){}
     public async execute(url:string):Promise<boolean> {
-
+        const fileOrigin= 'checks-service.ts';
         try {
             const req = await fetch(url);
             if (!req.ok) {
                 throw new Error('error occurred');
             }
 
-            const log = new LogEntity(`Service ${ url } working!`, LogSeverityLevel.low);
+            const log = new LogEntity({
+                message:`Service ${ url } working!`,
+                level:LogSeverityLevel.low,
+                origin:fileOrigin
+            });
             this.logRepository.saveLog(log);
             this.successCallBack();
             console.log(`${url} is ok`);
             return true;
         } catch (e) {
            
-            const log = new LogEntity(`${url} fail. ${e}`,LogSeverityLevel.high);
+            const log = new LogEntity({
+                message:`${url} fail. ${e}`,
+                level:LogSeverityLevel.high,
+                origin:fileOrigin
+            });
             this.logRepository.saveLog(log);
             this.errorCallBack(`${e}`);
             return false;
