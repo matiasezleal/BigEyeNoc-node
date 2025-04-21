@@ -1,0 +1,3 @@
+{"message":"Error: Email log not sent!","level":"high","createdAt":"2025-04-21T19:08:19.860Z","origin":"send-email-logs.ts"}
+{"message":"Service https://google.com working!","level":"low","createdAt":"2025-04-21T19:08:20.682Z","origin":"checks-service.ts"}
+{"message":"Service https://google.com working!","level":"low","createdAt":"2025-04-21T19:08:25.573Z","origin":"checks-service.ts"}
