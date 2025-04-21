@@ -1,0 +1,17 @@
+#version: '3.8'
+
+services:
+  mongo-db:
+    image: mongo:6.0.6
+    container_name: noc-mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: matias
+      MONGO_INITDB_ROOT_PASSWORD: 12345
+    volumes:
+      - ./mongodb:/data/db
+    ports:
+      - 27017:27017
+  
+volumes:
+  mongodb: {}
