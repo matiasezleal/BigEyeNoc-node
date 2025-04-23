@@ -28,5 +28,5 @@ async function main(){
     await newLog.save();
 
     console.log(newLog);*/
-    //Server.start(3000);
+    Server.start(3000);
 }

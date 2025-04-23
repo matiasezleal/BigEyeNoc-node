@@ -4,10 +4,13 @@ import { LogRepositoryImpl } from "../infrastructure/repositories/log.repository
 import { FileSystemsDatasource } from "../infrastructure/datasources/file-system.datasource";
 import { EmailService } from "./email/email.service";
 import { SendEmailLogs } from "../domain/use-cases/emails/send-email-logs";
+import { MongoLogDatasource } from "../infrastructure/datasources/mongo-log.datasource";
 
 
-const fileSystemLogRepository = new LogRepositoryImpl(
-    new FileSystemsDatasource()
+const logRepository = new LogRepositoryImpl(
+    //new FileSystemsDatasource()
+    new MongoLogDatasource
+
 );
 const emailService = new EmailService();
 
@@ -18,14 +21,14 @@ export class Server {
         console.log('Server started....');
         
         // Send email
-        new SendEmailLogs(emailService,fileSystemLogRepository).execute(['ml@gmail.com','ml@hotmail.com'])
+        new SendEmailLogs(emailService,logRepository).execute(['ml@gmail.com','ml@hotmail.com'])
     
         /** Here we make the timer job */
         CronService.createJob(
             '*/5 * * * * *',
             () => {
                 new CheckService(
-                    fileSystemLogRepository,
+                    logRepository,
                     () => console.log('success'),
                     () => console.log('error in service'),
                 ).execute('https://google.com');
