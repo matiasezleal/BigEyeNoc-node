@@ -46,6 +46,8 @@ export class FileSystemsDatasource implements LogDataSource{
 
     private getLogsFromFile =(path: string): LogEntity[]=>{
         const content = fs.readFileSync(path,'utf-8');
+
+        if (content==='') return []; // we avoid to call fromJson with empty string that will crash the app
         const logs = content.split('\n').map(
             log => LogEntity.fromJson(log));
         return logs;
