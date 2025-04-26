@@ -4,3 +4,4 @@ node_modules/
 .env
 readme.md
 mongodb/
+postgres/
