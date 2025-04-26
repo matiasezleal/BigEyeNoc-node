@@ -1,5 +1,6 @@
 import { envs } from "./config/plugins/envs.plugin";
 import { LogModel, MongoDataBase } from "./data/mongo";
+import { PrismaClient } from "./generated/prisma/client";
 import {Server} from "./presentation/server";
 
 
@@ -17,16 +18,5 @@ async function main(){
     });
 
 
-    // create coleccion
-    /*
-    const newLog = await LogModel.create({
-        message: 'fourth message from mong',
-        origin:'app.ts',
-        level:'medium'
-    });
-
-    await newLog.save();
-
-    console.log(newLog);*/
     Server.start(3000);
 }

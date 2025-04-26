@@ -5,11 +5,13 @@ import { FileSystemsDatasource } from "../infrastructure/datasources/file-system
 import { EmailService } from "./email/email.service";
 import { SendEmailLogs } from "../domain/use-cases/emails/send-email-logs";
 import { MongoLogDatasource } from "../infrastructure/datasources/mongo-log.datasource";
+import { PostgresLogDatasource } from "../infrastructure/datasources/postgres-log.datasource";
 
 
 const logRepository = new LogRepositoryImpl(
     //new FileSystemsDatasource()
-    new MongoLogDatasource
+    //new MongoLogDatasource
+    new PostgresLogDatasource()
 
 );
 const emailService = new EmailService();
