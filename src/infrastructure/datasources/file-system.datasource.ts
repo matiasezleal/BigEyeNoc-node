@@ -1,6 +1,7 @@
 import { LogDataSource } from "../../domain/datasources/log.datasource";
 import { LogEntity, LogSeverityLevel } from "../../domain/entitites/log.entity";
 import fs from 'fs';
+import { objectEnumValues } from "../../generated/prisma/runtime/library";
 
 
 export class FileSystemsDatasource implements LogDataSource{
@@ -63,7 +64,7 @@ export class FileSystemsDatasource implements LogDataSource{
             case LogSeverityLevel.high:
                 return this.getLogsFromFile(this.highLogsPath);
             default:
-                throw new Error(`${LogSeverityLevel} not implemented`);
+                throw new Error(`${severityLevel} not implemented`);
         }
     }
 

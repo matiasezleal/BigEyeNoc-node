@@ -80,4 +80,17 @@ describe('file system datasource test',()=>{
 
     }); */
 
+
+    test('should throw and erro if severity level is not defined',async()=>{
+
+        const logDatasource = new FileSystemsDatasource();
+        try {
+            await logDatasource.getLogs('error' as LogSeverityLevel);
+            expect(true).toBeFalsy();
+        } catch (error) {
+            
+            expect(`${error}`).toContain("Error: error not implemented");
+        }
+    });
+
 });
