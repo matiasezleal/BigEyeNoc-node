@@ -34,7 +34,7 @@ export class FileSystemsDatasource implements LogDataSource{
         const logAsJson = `${ JSON.stringify(newLog)}\n`;
         /*This just adds a new line at the end of the file without reading it as json */
         fs.appendFileSync(this.allLogsPath, logAsJson);
-
+        //TODO: Modify this logic only save in one file
         if (newLog.level == LogSeverityLevel.low) return;
         if (newLog.level == LogSeverityLevel.medium) {
             fs.appendFileSync(this.mediumLogsPath, logAsJson);
@@ -51,7 +51,6 @@ export class FileSystemsDatasource implements LogDataSource{
         const logs = content.split('\n').map(
             log => LogEntity.fromJson(log));
         return logs;
-
     }
 
     async getLogs(severityLevel: LogSeverityLevel): Promise<LogEntity[]> {
