@@ -22,7 +22,7 @@ describe('log.datasource.ts LogDatasource test', ()=>{
         const mockLogDatasource = new MockLogDatasource();
 
         expect(mockLogDatasource).toBeInstanceOf(MockLogDatasource);
-        expect(typeof mockLogDatasource.saveLog).toBe('fuction');
+        expect(typeof mockLogDatasource.saveLog).toBe('function');
         expect(typeof mockLogDatasource.getLogs).toBe('function');
 
         await mockLogDatasource.saveLog(log);
