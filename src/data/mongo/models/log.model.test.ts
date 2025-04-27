@@ -32,6 +32,10 @@ describe('log.modell.test.ts',()=>{
             id: expect.any(String)
 
         }));
+
+        /* after the test we delete the log */
+        await LogModel.findByIdAndDelete(log.id);
+        
     });
 
     test('should return the schema', ()=>{
